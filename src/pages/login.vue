@@ -110,7 +110,7 @@ export default {
       },
       rules2: {
         userName: [{ validator: validateUserName, trigger: "blur" }],
-        pass: [{ validator: validatePass, trigger: "blur" }],
+        // pass: [{ validator: validatePass, trigger: "blur" }],
       }
     };
   },
@@ -119,34 +119,20 @@ export default {
   },
   methods: {
     submitForm() {
-      this.$http.post('/api/test', {
+      this.$api.login({
         userName: this.ruleForm2.userName,
         userPwd: this.ruleForm2.pass
-      }, config).then( res => {
-        const data = res.data;
-        switch(data.code) {
-          case 0:
-            window.sessionStorage.setItem('account', this.ruleForm2.userName)
-            this.$router.push('/index')
-            break;
-          case 1:
-            Notification.error({
-              title: '登录失败',
-              message: data.msg
-            });
-            break;
-          case 2:
-            Notification.error({
-              title: '登录失败',
-              message: data.msg
-            })
-            break;
-          default:
-            Notification.error({
-              title: '错误',
-              message: '未知错误'
-            })
-            break;
+      }).then( res => {
+        console.log(JSON.parse(res));
+        const data = JSON.parse(res);
+        if (data.code === 0) {
+          window.sessionStorage.setItem('account', this.ruleForm2.userName)
+          this.$router.push('/index')
+        } else {
+          Notification.error({
+            title: '登录失败',
+            message: data.msg
+          })
         }
       }).catch(error => {
         Notification.error({

@@ -1,5 +1,7 @@
+
 import VueRouter from 'vue-router'
-import Vue from 'vue'
+
+// import Vue from 'vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +24,21 @@ const routes = [
             { path: '/menu', name: '菜单', component: () => import('../pages/menu.vue') },
             { path: '/list', name: '账号列表', component: () => import('../pages/accountList.vue') },
             { path: '/doc', name: '使用文档', component: () => import('../pages/doc.vue') },
+            {
+                path: '/users',
+                name: '用户',
+                component: () => import ('../pages/users.vue')
+            },
+            {
+                path: '/menumg',
+                name: '菜单管理',
+                component: () => import ('../pages/menuMg.vue')
+            },
+            {
+                path: '/merchant',
+                name: '商家',
+                component: () => import ('../pages/merchant/index.vue')
+            },
         ]
     },
 ]
