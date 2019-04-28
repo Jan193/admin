@@ -40,8 +40,7 @@
       icon-class="el-icon-caret-right"
       :render-content="renderContent"
     ></Tree>
-    <Alter v-show="isAlter">
-      <i class="el-icon-close" @click="close"></i>
+    <Dialog :visible.sync="isAlter" title="增加">
       <Form label-width="100px">
         <form-item label="名称">
           <Input v-model="formVal.iname"/>
@@ -56,18 +55,17 @@
           <Button type="primary" size="size" @click="submit">提交</Button>
         </form-item>
       </Form>
-    </Alter>
+    </Dialog>
   </div>
 </template>
 
 <script>
-import { Tree, Button, Form, FormItem, Input, Message } from "element-ui";
+import { Tree, Button, Form, FormItem, Input, Message, Dialog } from "element-ui";
 import Alter from "../components/alter.vue";
 
 export default {
   components: {
-    Tree, Button, Form, FormItem, Input, Message,
-    Alter
+    Tree, Button, Form, FormItem, Input, Message, Dialog
   },
   data() {
     return {

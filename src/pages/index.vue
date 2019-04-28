@@ -14,6 +14,9 @@ i.icon {
   &-container {
     background-color: #f0f0f0;
   }
+  .el-breadcrumb {
+    padding-bottom: 20px;
+  }
 }
 .index-menu {
   background-color: #304156;
@@ -42,12 +45,7 @@ i.icon {
 .el-menu {
   border-right: none;
 }
-// .el-submenu {
-//   .el-menu {
-//     background-color: #1f2d3d;
-//     border-right: 0;
-//   }
-// }
+
 .index-header {
   background-color: #fff;
   &_left {
@@ -142,6 +140,9 @@ i.icon {
           </ul>
         </el-header>
         <el-main>
+          <!-- <Breadcrumb>
+            <BreadcrumbItem v-for="(v, k) in breadcrumb" :key="k" :to="{ path: v.path}">{{v.name}}</BreadcrumbItem>
+          </Breadcrumb> -->
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -160,6 +161,8 @@ import {
   Header,
   Dropdown,
   Main,
+  Breadcrumb,
+  BreadcrumbItem,
 } from "element-ui";
 import { routes } from "../routes/index.js";
 // import Vue from 'vue'
@@ -174,17 +177,24 @@ export default {
     "el-header": Header,
     "el-dropdown": Dropdown,
     "el-main": Main,
+    Breadcrumb,
+    BreadcrumbItem,
   },
   data() {
     return {
       // menu: [],
       userName: "",
-      isCollapse: false
+      isCollapse: false,
     };
   },
   computed: {
     menu() {
       return this.$store.state.menuList;
+    },
+    breadcrumb() {
+      let arr = this.$store.state.breadcrumb;
+      arr.push(this.$route)
+      return this.uniq(arr);
     }
   },
   created() {

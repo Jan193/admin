@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    menuList: []
+    menuList: [],
+    breadcrumb: [],
 }
 
 export default new Vuex.Store({

@@ -14,6 +14,22 @@ axios.defaults.baseURL = 'http://127.0.0.1:7001'
 
 Vue.prototype.$http = axios
 Vue.prototype.axiosConfig = axiosConfig
+Vue.prototype.uniq = function(array){
+  var temp = [];
+  var index = [];
+  var l = array.length;
+  for(var i = 0; i < l; i++) {
+      for(var j = i + 1; j < l; j++){
+          if (array[i].name === array[j].name){
+              i++;
+              j = i;
+          }
+      }
+      temp.push(array[i]);
+      index.push(i);
+  }
+  return temp;
+}
 
 import api from './http/index'
 Vue.use(api)

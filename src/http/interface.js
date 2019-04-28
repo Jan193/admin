@@ -68,4 +68,60 @@ export default {
             params
         })
     },
+    merchantAdd(params) {
+        return $axios({
+            url: 'admin/merchant/add',
+            method: 'post',
+            params
+        })
+    },
+    merchantDelete(params) {
+        return $axios({
+            url: '/admin/merchant/delete',
+            method: 'post',
+            params
+        })
+    },
+    merchantUpdate(params) {
+        return $axios({
+            url: '/admin/merchant/update',
+            method: 'post',
+            params
+        })
+    },
+    merchantTypeList(params) {
+        return $axios({
+            url: '/merchant/goods/type/list',
+            method: 'get',
+            params
+        })
+    },
+    merchantTypeAdd(params) {
+        return $axios({
+            url: '/merchant/goods/type/add',
+            method: 'post',
+            params
+        })
+    },
+    merchantTypeUpdate(params) {
+        return $axios({
+            url: '/merchant/goods/type/update',
+            method: 'post',
+            params
+        })
+    },
+    merchantTypeDelete(params) {
+        return $axios({
+            url: '/merchant/goods/type/delete',
+            method: 'post',
+            params
+        })
+    },
+    goodsList(params) {
+        return $axios({
+            url: '/goods/list',
+            method: 'get',
+            params
+        })
+    }
 }

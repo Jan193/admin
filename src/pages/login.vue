@@ -123,7 +123,6 @@ export default {
         userName: this.ruleForm2.userName,
         userPwd: this.ruleForm2.pass
       }).then( res => {
-        console.log(JSON.parse(res));
         const data = JSON.parse(res);
         if (data.code === 0) {
           window.sessionStorage.setItem('account', this.ruleForm2.userName)

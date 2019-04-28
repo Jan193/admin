@@ -16,11 +16,10 @@ const routes = [
     },
     {
         path: '/index',
-        // name: '首页',
         component: () => import('../pages/index.vue'),
         children: [
             { path: '/', redirect: '/home'},
-            { path: '/home', name: '欢迎页', component: () => import('../pages/home.vue') },
+            { path: '/home', name: '首页', component: () => import('../pages/home.vue') },
             { path: '/menu', name: '菜单', component: () => import('../pages/menu.vue') },
             { path: '/list', name: '账号列表', component: () => import('../pages/accountList.vue') },
             { path: '/doc', name: '使用文档', component: () => import('../pages/doc.vue') },
@@ -36,8 +35,20 @@ const routes = [
             },
             {
                 path: '/merchant',
-                name: '商家',
-                component: () => import ('../pages/merchant/index.vue')
+                // name: '商家',
+                component: () => import ('../pages/merchant/index.vue'),
+                children: [
+                    {
+                        path: '/',
+                        name: '商家',
+                        component: () => import('../pages/merchant/merchantList.vue')
+                    },
+                    {
+                        path: '/goodsList/:merchantId',
+                        name: '商品列表',
+                        component: () => import('../pages/merchant/goodsList.vue')
+                    }
+                ]
             },
         ]
     },
